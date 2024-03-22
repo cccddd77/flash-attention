@@ -14,17 +14,11 @@ file(GLOB FLASH_ATTN_SOURCE_FILES ${FLASH_ATTN_DIR}/src/*.cu)
 
 add_library(flash_attention SHARED ${FLASH_ATTN_SOURCE_FILES})
 
-set_property(TARGET flash_attention PROPERTY CUDA_ARCHITECTURES OFF)
-
 target_include_directories(flash_attention PRIVATE 
   ${CUTLASS_3_DIR}/include
   ${FLASH_ATTN_DIR}/include)
 
 target_compile_options(flash_attention PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
--w
--Xcompiler="-fPIC"
--Xcompiler="-O3"
--std=c++17
 -U__CUDA_NO_HALF_OPERATORS__
 -U__CUDA_NO_HALF_CONVERSIONS__
 -U__CUDA_NO_HALF2_OPERATORS__
@@ -32,7 +26,6 @@ target_compile_options(flash_attention PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
 --expt-relaxed-constexpr
 --expt-extended-lambda
 --use_fast_math
--arch=native
 # "${FA_GENCODE_OPTION}"
 >)
 
