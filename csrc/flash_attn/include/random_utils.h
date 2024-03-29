@@ -59,16 +59,7 @@ namespace cuda {
 namespace philox {
 
 inline DEVICE std::tuple<uint64_t, uint64_t>
-unpack(PhiloxCudaState arg) {
-  if (arg.captured_) {
-    // static_cast avoids "warning: invalid narrowing conversion from "long" to "unsigned long".
-    // *(arg.offset_.ptr) is a broadcast load of a single int64_t to the entire kernel.
-    // For most threads' reads it will hit in cache, so it shouldn't hurt performance.
-    return std::make_tuple(arg.seed_, static_cast<uint64_t>(*(arg.offset_.ptr) + arg.offset_intragraph_));
-  } else {
-    return std::make_tuple(arg.seed_, arg.offset_.val);
-  }
-}
+unpack(PhiloxCudaState arg);
 
 } // namespace philox
 } // namespace cuda

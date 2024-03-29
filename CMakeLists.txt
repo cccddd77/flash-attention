@@ -19,6 +19,8 @@ target_include_directories(flash_attention PRIVATE
   ${FLASH_ATTN_DIR}/include)
 
 target_compile_options(flash_attention PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
+-w
+-rdc=true
 -U__CUDA_NO_HALF_OPERATORS__
 -U__CUDA_NO_HALF_CONVERSIONS__
 -U__CUDA_NO_HALF2_OPERATORS__
