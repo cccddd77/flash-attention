@@ -8,6 +8,7 @@
 
 #include "static_switch.h"
 #include "flash.h"
+#include "random_utils.h"
 #include "flash_fwd_kernel.h"
 
 template<typename Kernel_traits, bool Is_dropout, bool Is_causal, bool Is_local, bool Has_alibi, bool Is_even_MN, bool Is_even_K, bool Return_softmax>

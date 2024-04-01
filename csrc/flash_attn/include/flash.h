@@ -7,7 +7,7 @@
 #include <cuda.h>
 #include <vector>
 
-#include "random_utils.h"
+#include "random_state.h"
 
 constexpr int TOTAL_DIM = 0;
 constexpr int H_DIM = 1;

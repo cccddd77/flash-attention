@@ -5,7 +5,6 @@ project(flash_attention LANGUAGES CXX CUDA)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# find_package(CUDA REQUIRED)
 
 set(CUTLASS_3_DIR ${CMAKE_CURRENT_SOURCE_DIR}/csrc/cutlass)
 set(FLASH_ATTN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/csrc/flash_attn)
@@ -22,7 +21,6 @@ target_include_directories(flash_attention PRIVATE
 
 target_compile_options(flash_attention PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
 -w
--rdc=true
 -U__CUDA_NO_HALF_OPERATORS__
 -U__CUDA_NO_HALF_CONVERSIONS__
 -U__CUDA_NO_HALF2_OPERATORS__
@@ -30,7 +28,6 @@ target_compile_options(flash_attention PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
 --expt-relaxed-constexpr
 --expt-extended-lambda
 --use_fast_math
-# "${FA_GENCODE_OPTION}"
 >)
 
 include(GNUInstallDirs)
